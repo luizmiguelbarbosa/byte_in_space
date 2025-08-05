@@ -16,7 +16,7 @@ pygame.init()
 pygame.mixer.init()
 
 #tocar a música no menu do jogo 
-pygame.mixer.music.load('D:/Users/lmsbn/Desktop/Projeto IP/Musicas do jogo/Musica Menu do jogo.mp3') #subi a musica
+pygame.mixer.music.load('musicas/musica_jogo.mp3') #subi a musica
 pygame.mixer.music.play(-1) #-1 significa que a musica vai tocar em loop infinito 
 
 #agora vamos definir o objeto que será a nossa tela
@@ -28,13 +28,13 @@ tela = pygame.display.set_mode((largura, altura), RESIZABLE) #Essa flag RESIZABL
 pygame.display.set_caption("Byte in Space")
 
 #vou fazer aqui a parte do icone da janela do jogo 
-icone = pygame.image.load('D:/Users/lmsbn/Desktop/Projeto IP/Imagens/Icone da janela do jogo.png')  #Caminho do icone do jogo
+icone = pygame.image.load('imagens/icone_janela.png')  #Caminho do icone do jogo
 pygame.display.set_icon(icone)
 
 #Agora vou programar o menu principal do jogo com base nas suas coordenadas
 #primeiro vou carregar a imagem do menu
 #aqui carreguei a imagem (sem redimensionar ainda)
-imagem_menu_original = pygame.image.load('D:/Users/lmsbn/Desktop/Projeto IP/Imagens/Imagem menu do jogo.png')
+imagem_menu_original = pygame.image.load('imagens/img_menu_jogo.png')
 imagem_menu = pygame.transform.scale(imagem_menu_original,(largura,altura)) #coloquei na escala das variaveis que defini antes
 
 #agora vou fazer as variaveis das coordenadas (fiz isso para fazer retângulos)
