@@ -12,6 +12,13 @@ from sys import exit #Essa função que eu importei serve para fechar a janela
 #Primeiramente vamos inicializar todas as funções e variáveis da biblioteca pygame
 pygame.init()
 
+#vou inicializar o módulo do som (para por músicas)
+pygame.mixer.init()
+
+#tocar a música no menu do jogo 
+pygame.mixer.music.load('D:/Users/lmsbn/Desktop/Projeto IP/Musicas do jogo/Musica Menu do jogo.mp3') #subi a musica
+pygame.mixer.music.play(-1) #-1 significa que a musica vai tocar em loop infinito 
+
 #agora vamos definir o objeto que será a nossa tela
 largura = 640
 altura = 480
