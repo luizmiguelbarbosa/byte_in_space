@@ -7,7 +7,21 @@ import pygame
 from pygame.locals import * #esse submódulo ele contém todas as constantes e funções que a gente vai usar no nosso script. Esse asteristico no diz que dentro do meu submódulo locals, eu vou estar importando todas as funções e todas as constantes que o submódulo locals contém, e o submódulo locals, por sua vez, está dentro da biblioteca pygame
 #agora vou importar uma função que está dentro do módulo sys
 from sys import exit #Essa função que eu importei serve para fechar a janela 
+
 from random import randint #para adicionar coisas aleatória heheh isso vai ser massa :)
+
+# Classe para representar itens coletáveis que substituem "item"
+class Coletavel:
+    TAM = 30
+
+    def __init__(self, x, y, tipo):
+        # tipo deve ser 'computador', 'circuito' ou 'dados'
+        self.tipo = tipo
+        self.rect = pygame.Rect(x, y, self.TAM, self.TAM)
+
+    def desenhar(self, superficie):
+        # desenha usando sprite específico do tipo
+        superficie.blit(sprite_coletaveis[self.tipo], self.rect.topleft)
 
 #Agora que ja fizemos as importações, vamos começar o script de fato 
 pygame.init() #inicializa o pygame
@@ -76,7 +90,8 @@ sprite_nave = pygame.transform.scale(sprite_nave, (75, 75)) #ajusto o tamanho da
 nave_x = largura // 2 - 25 #a nave tem 50px de largura, então centralizei
 nave_y = altura - 80 #coloquei a nave um pouco acima da borda inferior
 
-velocidade_nave = 4 #define a velocidade com que a nave se move
+velocidade_nave_base = 4  # velocidade base da nave
+velocidade_nave = velocidade_nave_base  # velocidade atual (afetada por TURBO)
 
 #lista para armazenar os tiros disparados
 tiros = [] #aqui vão ficar todos os tiros ativos na tela
@@ -97,12 +112,9 @@ fps = 60  # define 60 frames por segundo
 sprite_inimigo = pygame.image.load('imagens/sprite_inimigo.png')
 sprite_inimigo = pygame.transform.scale(sprite_inimigo, (40, 40))  # ajusta tamanho conforme necessário
 
-# carrega sprite do item coletável
-sprite_item = pygame.image.load('imagens/item1.png')
-sprite_item = pygame.transform.scale(sprite_item, (30, 30))
 
 inimigos = []  # lista de inimigos ativos
-itens = []     # lista de itens dropados
+coletaveis = []     # lista de coletáveis ativos
 
 #altura máxima que os inimigos podem descer antes de parar (não quero que eles vão até o fim da tela)
 y_max_inimigo = altura // 2  #aqui estou dizendo que os inimigos vão parar no meio da tela (metade da altura total)
@@ -121,8 +133,27 @@ for _ in range(15):  #vou criar 15 inimigos logo no início (mais inimigos = mai
 tempo_ultimo_inimigo = pygame.time.get_ticks()  #tempo do último inimigo criado (começa agora)
 intervalo_spawn_inimigo = 1500  #tempo entre um inimigo e outro (em milissegundos) — 1500ms = 1,5 segundos
 
-contagem_itens = 0  # contador de itens coletados
 fonte_item = pygame.font.SysFont(None, 30)
+
+# contagem separada por tipo
+contagem_coletaveis = {'computador': 0, 'circuito': 0, 'dados': 0}
+
+# efeitos temporários (em milissegundos)
+EFEITO_DURACAO = 10000
+imune_ate = 0
+turbo_ate = 0
+furia_ate = 0
+
+# sprites dos coletáveis
+sprite_computador = pygame.image.load('imagens/computador.png')
+sprite_circuito   = pygame.image.load('imagens/circuito.png')
+sprite_dados      = pygame.image.load('imagens/dados.png')
+
+sprite_coletaveis = {
+    'computador': pygame.transform.scale(sprite_computador, (Coletavel.TAM, Coletavel.TAM)),
+    'circuito':   pygame.transform.scale(sprite_circuito,   (Coletavel.TAM, Coletavel.TAM)),
+    'dados':      pygame.transform.scale(sprite_dados,      (Coletavel.TAM, Coletavel.TAM)),
+}
 
 #variáveis para controlar o Game Over
 game_over = False  #começa como False porque o jogador ainda não perdeu
@@ -160,9 +191,12 @@ while True:
                     mostrar_texto_fase = True
                     tempo_inicio_fase = pygame.time.get_ticks()
                     inimigos.clear()
-                    itens.clear()
+                    coletaveis.clear()
                     tiros.clear()
-                    contagem_itens = 0
+                    contagem_coletaveis = {'computador': 0, 'circuito': 0, 'dados': 0}
+                    imune_ate = 0
+                    turbo_ate = 0
+                    furia_ate = 0
                     for _ in range(15):
                         inimigos.append(criar_inimigo())
                 elif botao_diffcuty.collidepoint(event.pos):
@@ -172,11 +206,22 @@ while True:
 
         if event.type == KEYDOWN and jogo_rodando and not game_over:
             if event.key == K_z:
-                tiros.append([nave_x + 23, nave_y])
+                agora = pygame.time.get_ticks()
+                centro_tiro = nave_x + nave_largura // 2 - 2
+                if agora < furia_ate:
+                    # tiro triplo durante FÚRIA
+                    tiros.append([centro_tiro - 12, nave_y])
+                    tiros.append([centro_tiro, nave_y])
+                    tiros.append([centro_tiro + 12, nave_y])
+                else:
+                    tiros.append([centro_tiro, nave_y])
                 som_tiro.play()
 
     #se o jogo está rodando e o jogador não perdeu ainda
     if jogo_rodando and not game_over:
+        # atualiza efeitos temporários
+        agora = pygame.time.get_ticks()
+        velocidade_nave = velocidade_nave_base * (2 if agora < turbo_ate else 1)
         
         #movimentação da nave
         teclas = pygame.key.get_pressed()
@@ -221,6 +266,9 @@ while True:
         #nave e retângulo para colisões
         tela.blit(sprite_nave, (nave_x, nave_y))
         rect_nave = pygame.Rect(nave_x, nave_y, nave_largura, nave_altura)
+        # aura visual de ESCUDO quando ativo
+        if pygame.time.get_ticks() < imune_ate:
+            pygame.draw.rect(tela, (0, 200, 255), rect_nave.inflate(10, 10), 3, border_radius=6)
 
         #tiros
         for tiro in tiros[:]:
@@ -242,13 +290,16 @@ while True:
                     tiros.remove(tiro)
                     inimigos.remove(inimigo)
                     if randint(1, 10) <= 3:
-                        itens.append([inimigo[0], inimigo[1]])
+                        tipo_sorteado = ('computador', 'circuito', 'dados')[randint(0, 2)]
+                        coletaveis.append(Coletavel(inimigo[0], inimigo[1], tipo_sorteado))
                     break
 
             #colisão nave × inimigo
             if rect_nave.colliderect(pygame.Rect(inimigo[0], inimigo[1], 40, 40)):
-                game_over = True
-                tempo_game_over = pygame.time.get_ticks()
+                if pygame.time.get_ticks() >= imune_ate:
+                    game_over = True
+                    tempo_game_over = pygame.time.get_ticks()
+                # se está imune, ignora a colisão
                 break
 
         #spawn de novos inimigos
@@ -256,17 +307,33 @@ while True:
             inimigos.append(criar_inimigo())
             tempo_ultimo_inimigo = pygame.time.get_ticks()
 
-        #itens
-        for item in itens[:]:
-            tela.blit(sprite_item, (item[0], item[1]))
-            rect_item = pygame.Rect(item[0], item[1], 30, 30)
-            if rect_nave.colliderect(rect_item):
-                itens.remove(item)
-                contagem_itens += 1
+        # coletáveis
+        for c in coletaveis[:]:
+            c.desenhar(tela)
+            if rect_nave.colliderect(c.rect):
+                coletaveis.remove(c)
+                contagem_coletaveis[c.tipo] += 1
+                # ativa efeito ao acumular 3
+                if contagem_coletaveis[c.tipo] >= 3:
+                    agora = pygame.time.get_ticks()
+                    if c.tipo == 'computador':
+                        imune_ate = agora + EFEITO_DURACAO  # escudo
+                    elif c.tipo == 'circuito':
+                        turbo_ate = agora + EFEITO_DURACAO  # turbo
+                    elif c.tipo == 'dados':
+                        furia_ate = agora + EFEITO_DURACAO  # tiro triplo
+                    contagem_coletaveis[c.tipo] = 0
 
-        #contador de itens
-        texto_contagem = fonte_item.render(f'Itens: {contagem_itens}', True, (255, 255, 0))
-        tela.blit(texto_contagem, (largura - texto_contagem.get_width() - 10, 10))
+        # HUD: contadores por tipo no topo esquerdo
+        texto_e = fonte_item.render(f'Computadores: {contagem_coletaveis["computador"]}/3', True, (0, 200, 255))
+        texto_t = fonte_item.render(f'Circuitos: {contagem_coletaveis["circuito"]}/3',   True, (255, 200, 0))
+        texto_f = fonte_item.render(f'Dados: {contagem_coletaveis["dados"]}/3',         True, (255, 80, 80))
+
+        x_hud, y_hud = 10, 10
+
+        tela.blit(texto_e, (x_hud, y_hud))
+        tela.blit(texto_t, (x_hud, y_hud + texto_e.get_height() + 4))
+        tela.blit(texto_f, (x_hud, y_hud + texto_e.get_height() + texto_t.get_height() + 8))
 
     #se o jogador perdeu
     elif game_over:
