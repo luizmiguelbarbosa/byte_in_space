@@ -205,7 +205,7 @@ while True:
                     print("Mostrar créditos")
 
         if event.type == KEYDOWN and jogo_rodando and not game_over:
-            if event.key == K_z:
+            if event.key == K_SPACE:
                 agora = pygame.time.get_ticks()
                 centro_tiro = nave_x + nave_largura // 2 - 2
                 if agora < furia_ate:
