@@ -114,7 +114,7 @@ fps = 60  # define 60 frames por segundo
 
 # inimigos
 # carrega sprite de inimigo
-sprite_inimigo = pygame.image.load('imagens/sprite_inimigo.png')
+sprite_inimigo = pygame.image.load('imagens/sprite_nave.png')
 sprite_inimigo = pygame.transform.scale(sprite_inimigo, (40, 40))  # ajusta tamanho conforme necessário
 
 
