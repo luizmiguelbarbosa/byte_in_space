@@ -41,3 +41,15 @@
 Clone o repositório
 ```bash
 git clone https://github.com/luizmiguelbarbosa/byte_in_space.git
+```
+No PowerShell, execute:
+```bash
+Set-ExecutionPolicy RemoteSigned -Scope Process
+& byte_in_space/venv/Scripts/Activate.ps1
+cd byte_in_space
+pip install -r requirements.txt
+```
+
+
+
+
