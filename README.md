@@ -46,7 +46,11 @@ No PowerShell, execute:
 ```bash
 Set-ExecutionPolicy RemoteSigned -Scope Process
 & byte_in_space/venv/Scripts/Activate.ps1
+```
+```bash
 cd byte_in_space
+```
+```bash
 pip install -r requirements.txt
 ```
 
