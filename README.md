@@ -58,6 +58,6 @@ cd byte_in_space
 pip install -r requirements.txt
 ```
 ## Estruturas de Pastas
-
+Arquitetura de Pastas do Projeto
 
 
