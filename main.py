@@ -2,7 +2,6 @@ import pygame
 from pygame.locals import *
 import cv2  # Para a cutscene
 from config import *
-
 from entities.coletavel import Coletavel
 from entities.eventos import processar_eventos
 from entities.update import atualizar
