@@ -1,6 +1,6 @@
 # Byte in Space 🚀💫
 
-#Equipe
+# Equipe
 Gustavo Vieira Carlini Charamba <gvcc2>
 Rafael Silva Moura <rsm7>
 Luiz Miguel de Souza Barbosa Nascimento <lmsbn>
