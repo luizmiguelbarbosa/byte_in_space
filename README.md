@@ -36,9 +36,9 @@
   </tr>
 </table>
 
-# Instalando o jogo ⚙️🛠️
+## Instalando o jogo ⚙️🛠️
 
-##Clonar o repositório
+Clonar o repositório
 Clone o repositório
 ```bash
 git clone https://github.com/luizmiguelbarbosa/byte_in_space.git
