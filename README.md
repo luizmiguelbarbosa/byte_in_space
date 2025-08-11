@@ -60,5 +60,5 @@ pip install -r requirements.txt
 ## Estruturas de Pastas 📂
 Arquitetura de Pastas do Projeto
 ### entites
-Classes das entidades do jogo. Ex.: 'Player' 'Inimigos'
+Classes das entidades do jogo. Ex.: `Player` e `Inimigos`
 
