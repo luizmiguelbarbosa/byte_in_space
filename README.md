@@ -36,7 +36,7 @@
   </tr>
 </table>
 
-# Instalando o jogo
+# Instalando o jogo ⚙️🛠️
 
 ##Clonar o repositório
 Clone o repositório
