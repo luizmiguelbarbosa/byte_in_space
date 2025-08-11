@@ -5,31 +5,31 @@
   <tr>
     <td align="center">
       <a href="https://github.com/gustavocharamba">
-        <img src="URL_DA_FOTO_GUSTAVO" width="100px;" alt="Gustavo Charamba"/><br />
+        <img src="https://avatars.githubusercontent.com/gustavocharamba" width="100px;" alt="Gustavo Charamba"/><br />
         <sub><b>Gustavo Charamba</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/lgss0">
-        <img src="URL_DA_FOTO_LUIS" width="100px;" alt="Luis Santana"/><br />
-        <sub><b>Luiz Santana</b></sub>
+        <img src="https://avatars.githubusercontent.com/lgss0" width="100px;" alt="lgss0"/><br />
+        <sub><b>lgss0</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/SmouraCodeX">
-        <img src="URL_DA_FOTO_SMOURA" width="100px;" alt="SmouraCodeX"/><br />
+        <img src="https://avatars.githubusercontent.com/SmouraCodeX" width="100px;" alt="SmouraCodeX"/><br />
         <sub><b>SmouraCodeX</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/lebb8">
-        <img src="URL_DA_FOTO_LEBB8" width="100px;" alt="lebb8"/><br />
+        <img src="https://avatars.githubusercontent.com/lebb8" width="100px;" alt="lebb8"/><br />
         <sub><b>lebb8</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/luizmiguelbarbosa">
-        <img src="URL_DA_FOTO_LUIZ_MIGUEL" width="100px;" alt="Luiz Miguel Barbosa"/><br />
+        <img src="https://avatars.githubusercontent.com/luizmiguelbarbosa" width="100px;" alt="Luiz Miguel Barbosa"/><br />
         <sub><b>Luiz Miguel Barbosa</b></sub>
       </a>
     </td>
