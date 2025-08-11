@@ -59,5 +59,6 @@ pip install -r requirements.txt
 ```
 ## Estruturas de Pastas 📂
 Arquitetura de Pastas do Projeto
+### entites
 
 
