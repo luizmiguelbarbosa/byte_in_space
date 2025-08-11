@@ -33,6 +33,10 @@
         <sub><b>Luiz Miguel Barbosa</b></sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/miqueias-santos">
+        <img src="https://avatars.githubusercontent.com/miqueias-santos" width="100px;" alt="Luiz Miguel Barbosa"/><br />
+        <sub><b>Miqueuias Santos</b></sub>
   </tr>
 </table>
 
