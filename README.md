@@ -57,7 +57,7 @@ cd byte_in_space
 ```bash
 pip install -r requirements.txt
 ```
-## Estruturas de Pastas
+## Estruturas de Pastas 📂
 Arquitetura de Pastas do Projeto
 
 
