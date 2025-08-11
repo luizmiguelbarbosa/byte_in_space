@@ -42,7 +42,6 @@ Clone o repositório
 ```bash
 git clone https://github.com/luizmiguelbarbosa/byte_in_space.git
 
-##No PowerShell
 No PowerShell, execute:
 Set-ExecutionPolicy RemoteSigned -Scope Process
 & D:/Users/lmsbn/byte_in_space/venv/Scripts/Activate.ps1
