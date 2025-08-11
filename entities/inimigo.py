@@ -16,4 +16,4 @@ class Inimigo:
         tela.blit(self.sprite, (self.x, self.y))
 
     def get_rect(self):
-        return pygame.Rect(self.x, self.y, 40, 40)
+        return pygame.Rect(self.x, self.y, 75, 75)

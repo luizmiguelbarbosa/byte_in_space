@@ -60,7 +60,7 @@ estado = {
     "tiros": [],
     "som_tiro": pygame.mixer.Sound('assets/musicas/tiro.mp3'),
     "velocidade_tiro": VELOCIDADE_TIRO,
-    "sprite_inimigo": pygame.transform.scale(pygame.image.load('assets/imagens/sprite_inimigo.png'), (40, 40)),
+    "sprite_inimigo": pygame.transform.scale(pygame.image.load('assets/imagens/sprite_inimigo.png'), (60, 60)),
     "inimigos": [],
     "coletaveis": [],
     "velocidade_coletavel": VELOCIDADE_COLETAVEL,
