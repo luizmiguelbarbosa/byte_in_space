@@ -1,6 +1,6 @@
 # Byte in Space 🐶🚀💫
 
-# Equipe
+# Equipe 🧑‍💻
 <table>
   <tr>
     <td align="center">
