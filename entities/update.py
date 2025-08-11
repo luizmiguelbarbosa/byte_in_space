@@ -1,0 +1,92 @@
+import pygame
+from config import *
+from random import randint
+from entities.coletavel import Coletavel
+from entities.inimigo import Inimigo
+
+def atualizar(estado):
+    if estado["jogo_rodando"] and not estado["game_over"]:
+        agora = pygame.time.get_ticks()
+        estado["velocidade_nave"] = VELOCIDADE_NAVE_BASE * (2 if agora < estado["turbo_ate"] else 1)
+
+        teclas = pygame.key.get_pressed()
+        # Movimento nave
+        if teclas[pygame.K_LEFT] or teclas[pygame.K_a]:
+            estado["nave_x"] -= estado["velocidade_nave"]
+        if teclas[pygame.K_RIGHT] or teclas[pygame.K_d]:
+            estado["nave_x"] += estado["velocidade_nave"]
+        if teclas[pygame.K_UP] or teclas[pygame.K_w]:
+            estado["nave_y"] -= estado["velocidade_nave"]
+        if teclas[pygame.K_DOWN] or teclas[pygame.K_s]:
+            estado["nave_y"] += estado["velocidade_nave"]
+
+        # Limites da nave
+        if estado["nave_x"] < 0:
+            estado["nave_x"] = 0
+        if estado["nave_x"] > estado["largura"] - NAVE_LARGURA:
+            estado["nave_x"] = estado["largura"] - NAVE_LARGURA
+        if estado["nave_y"] < 0:
+            estado["nave_y"] = 0
+        if estado["nave_y"] > estado["altura"] - NAVE_ALTURA:
+            estado["nave_y"] = estado["altura"] - NAVE_ALTURA
+
+        # Atualiza cenário
+        estado["cenario_y1"] += estado["velocidade_cenario"]
+        estado["cenario_y2"] += estado["velocidade_cenario"]
+        if estado["cenario_y1"] >= estado["altura"]:
+            estado["cenario_y1"] = -estado["altura"]
+        if estado["cenario_y2"] >= estado["altura"]:
+            estado["cenario_y2"] = -estado["altura"]
+
+        # Atualiza inimigos
+        for inimigo in estado["inimigos"][:]:
+            inimigo.atualizar()
+
+            # Colisão tiros × inimigos
+            for tiro in estado["tiros"][:]:
+                if inimigo.get_rect().collidepoint(tiro[0], tiro[1]):
+                    estado["tiros"].remove(tiro)
+                    estado["inimigos"].remove(inimigo)
+                    if randint(1, 10) <= 3:
+                        tipo_sorteado = ('computador', 'circuito', 'dados')[randint(0, 2)]
+                        estado["coletaveis"].append(Coletavel(inimigo.x, inimigo.y, tipo_sorteado))
+                    break
+
+            # Colisão nave × inimigos
+            rect_nave = pygame.Rect(estado["nave_x"], estado["nave_y"], NAVE_LARGURA, NAVE_ALTURA)
+            if rect_nave.colliderect(inimigo.get_rect()):
+                if agora >= estado["imune_ate"]:
+                    estado["game_over"] = True
+                    estado["tempo_game_over"] = pygame.time.get_ticks()
+                break
+
+        # Spawn inimigos
+        if agora - estado["tempo_ultimo_inimigo"] >= INTERVALO_SPAWN_INIMIGO:
+            estado["inimigos"].append(Inimigo(estado["largura"], estado["altura"], estado["y_max_inimigo"], estado["sprite_inimigo"]))
+            estado["tempo_ultimo_inimigo"] = agora
+
+        # Atualiza tiros
+        for tiro in estado["tiros"][:]:
+            tiro[1] -= VELOCIDADE_TIRO
+            if tiro[1] < 0:
+                estado["tiros"].remove(tiro)
+
+        # Atualiza coletáveis
+        for c in estado["coletaveis"][:]:
+            c.rect.y += VELOCIDADE_COLETAVEL
+            if c.rect.top > estado["altura"]:
+                estado["coletaveis"].remove(c)
+                continue
+
+            rect_nave = pygame.Rect(estado["nave_x"], estado["nave_y"], NAVE_LARGURA, NAVE_ALTURA)
+            if rect_nave.colliderect(c.rect):
+                estado["coletaveis"].remove(c)
+                estado["contagem_coletaveis"][c.tipo] += 1
+                if estado["contagem_coletaveis"][c.tipo] >= 3:
+                    if c.tipo == 'computador':
+                        estado["imune_ate"] = agora + EFEITO_DURACAO
+                    elif c.tipo == 'circuito':
+                        estado["turbo_ate"] = agora + EFEITO_DURACAO
+                    elif c.tipo == 'dados':
+                        estado["furia_ate"] = agora + EFEITO_DURACAO
+                    estado["contagem_coletaveis"][c.tipo] = 0

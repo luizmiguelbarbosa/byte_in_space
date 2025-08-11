@@ -11,7 +11,7 @@ altura = 480
 tela = pygame.display.set_mode((largura, altura), RESIZABLE)
 pygame.display.set_caption("Byte in Space")
 
-icone = pygame.image.load('imagens/icone_janela.png')
+icone = pygame.image.load('assets/imagens/icone_janela.png')
 pygame.display.set_icon(icone)
 
 # Carregar vídeo com moviepy
