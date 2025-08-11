@@ -1,4 +1,4 @@
-# Byte in Space 🚀💫
+# Byte in Space 🐶🚀💫
 
 # Equipe
 <table>
