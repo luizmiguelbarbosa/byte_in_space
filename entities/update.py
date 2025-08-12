@@ -85,11 +85,10 @@ def atualizar(estado):
             if rect_nave.colliderect(c.rect):
                 estado["coletaveis"].remove(c)
                 estado["contagem_coletaveis"][c.tipo] += 1
-                if estado["contagem_coletaveis"][c.tipo] >= 3:
+                if estado["contagem_coletaveis"][c.tipo] // 3 == 0:
                     if c.tipo == 'computador':
                         estado["imune_ate"] = agora + EFEITO_DURACAO
                     elif c.tipo == 'circuito':
                         estado["turbo_ate"] = agora + EFEITO_DURACAO
                     elif c.tipo == 'dados':
                         estado["furia_ate"] = agora + EFEITO_DURACAO
-                    estado["contagem_coletaveis"][c.tipo] = 0

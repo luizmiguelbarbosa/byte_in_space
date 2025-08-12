@@ -40,9 +40,9 @@ def renderizar(estado):
     # HUD
     fonte_item = estado["fonte_item"]
 
-    texto_e = fonte_item.render(f'Computadores: {estado["contagem_coletaveis"]["computador"]}/3', True, (0, 200, 255))
-    texto_t = fonte_item.render(f'Circuitos: {estado["contagem_coletaveis"]["circuito"]}/3', True, (255, 200, 0))
-    texto_f = fonte_item.render(f'Dados: {estado["contagem_coletaveis"]["dados"]}/3', True, (255, 80, 80))
+    texto_e = fonte_item.render(f'Computadores: {estado["contagem_coletaveis"]["computador"]}', True, (0, 200, 255))
+    texto_t = fonte_item.render(f'Circuitos: {estado["contagem_coletaveis"]["circuito"]}', True, (255, 200, 0))
+    texto_f = fonte_item.render(f'Dados: {estado["contagem_coletaveis"]["dados"]}', True, (255, 80, 80))
 
     x_hud, y_hud = 10, 10
     tela.blit(texto_e, (x_hud, y_hud))
