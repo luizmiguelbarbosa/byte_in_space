@@ -91,5 +91,5 @@ Arquivos de assets do jogo. Ex: `Imagens`, `Músicas` e `Vídeos`
 │       └── cutscene1.mp4
 ```
 ## Capturas de Tela 🎮
-<img src="assets/1.png" alt="Tela inicial" width="600">
+<img src="assets/capturas/1.png" alt="Tela inicial" width="600">
 
