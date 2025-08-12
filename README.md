@@ -97,7 +97,7 @@ Arquivos de assets do jogo. Ex: `Imagens`, `Músicas` e `Vídeos`
   <img src="assets/caputuras/3.png" alt="Captura 3" width="300">
 </p>
 
-## Bibliotecas Utilizadas
+## Bibliotecas Utilizadas 📚
 ```bash
 pygame 2.6.1
 openCV2 4.12.0
@@ -113,7 +113,7 @@ openCV2 4.12.0
   </tr>
   <tr>
     <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/gustavocharamba?tab=overview&from=2025-08-01&to=2025-08-11" style="color: #FFD700;">Gustavo Charamba</a></td>
-    <td style="border: 1px solid white; padding: 8px;">Desenvolveu estados de controle do jogo e lógica envolvendo itens e inventário</td>
+    <td style="border: 1px solid white; padding: 8px;">Desenvolveu estados de controle do jogo e lógica envolvendo itens</td>
   </tr>
   <tr>
     <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/lgss0" style="color: #FFD700;">lgss0</a></td>
@@ -121,7 +121,7 @@ openCV2 4.12.0
   </tr>
   <tr>
     <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/SmouraCodeX" style="color: #FFD700;">SmouraCodeX</a></td>
-    <td style="border: 1px solid white; padding: 8px;">Desenvolveu telas iniciais, créditos, game over e mecânica de tiros com o mouse</td>
+    <td style="border: 1px solid white; padding: 8px;">Desenvolveu telas iniciais, créditos, game over e mecânica de tiros com a barra de espaço</td>
   </tr>
   <tr>
     <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/lebb8" style="color: #FFD700;">lebb8</a></td>
