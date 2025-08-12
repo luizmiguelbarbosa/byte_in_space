@@ -135,3 +135,16 @@ openCV2 4.12.0
     <td>Auxiliou no design e contribuiu para otimizações de desempenho do projeto</td>
   </tr>
 </table>
+
+## Conceitos Utilizados
+Aplicamos desde os fundamentos como listas e estruturas de repetição, até os tópicos avançados, incluindo os princípios iniciais da Programação Orientada a Objetos (POO).
+
+A utiilização de funções, loops e condicionais foram cruciais para o desenvolvimento do jogo, visto que, contribuem imensamente para a escalabilidade e organização do código.
+
+Além disso Orientação a objetos nos permitiu a estruturação e construção do código em torno da organização em classes e suas funções associadas, a capacidade de gerenciar cada objeto de forma independente simplificou o processo de escrita do código e significativamente aprimorou a sua legibilidade.
+
+## Desafios e Erros
+Enfrentamos alguns desafios durante o projeto, especialmente relacionados ao planejamento e à priorização de tarefas dentro da equipe. Sendo o principal problema a falta de priorização nas tarefas fundamentais, o que nos levou a gastar um tempo considerável reescrevendo parte da base do código, juntamente com as implementações que já tínhamos concluído. Como resultado, enfrentamos diversos problemas de conflito e integração entre diferentes branches.
+
+Todos do time com certeza levaram como maior lição que um bom planejamento com priorizações certas são tão cruciais quanto bons conhecimentos técnicos.
+
