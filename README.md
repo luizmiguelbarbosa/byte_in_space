@@ -102,4 +102,40 @@ Arquivos de assets do jogo. Ex: `Imagens`, `Músicas` e `Vídeos`
 pygame 2.6.1
 openCV2 4.12.0
 ```
+## Divisão de Tarefas do Projeto 🌌
+
+<div style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); background-color: #000; padding: 20px; border-radius: 15px;">
+
+<table align="center" style="color: white; border-collapse: collapse; width: 100%;">
+  <tr>
+    <th style="border: 1px solid white; padding: 8px;">Time</th>
+    <th style="border: 1px solid white; padding: 8px;">Link do GitHub</th>
+  </tr>
+  <tr>
+    <td style="border: 1px solid white; padding: 8px;">Gustavo Charamba</td>
+    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/gustavocharamba?tab=overview&from=2025-08-01&to=2025-08-11" style="color: #00FFCF;">Perfil</a></td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid white; padding: 8px;">lgss0</td>
+    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/lgss0" style="color: #00FFCF;">Perfil</a></td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid white; padding: 8px;">SmouraCodeX</td>
+    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/SmouraCodeX" style="color: #00FFCF;">Perfil</a></td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid white; padding: 8px;">lebb8</td>
+    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/lebb8" style="color: #00FFCF;">Perfil</a></td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid white; padding: 8px;">luizmiguelbarbosa</td>
+    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/luizmiguelbarbosa" style="color: #00FFCF;">Perfil</a></td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid white; padding: 8px;">miqueias-santos</td>
+    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/miqueias-santos" style="color: #00FFCF;">Perfil</a></td>
+  </tr>
+</table>
+
+</div>
 
