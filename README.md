@@ -101,6 +101,8 @@ Arquivos de assets do jogo. Ex: `Imagens`, `Músicas` e `Vídeos`
 ```bash
 pygame 2.6.1
 openCV2 4.12.0
+random
+sys
 ```
 ## Divisão de Tarefas do Projeto 🌌
 
