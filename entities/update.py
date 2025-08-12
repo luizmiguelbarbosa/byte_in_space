@@ -41,6 +41,9 @@ def atualizar(estado):
         # Atualiza inimigos
         for inimigo in estado["inimigos"][:]:
             inimigo.atualizar()
+            if inimigo.y > ALTURA:
+                 estado["inimigos"].remove(inimigo)
+                 print("morreu")
 
             # Colisão tiros × inimigos
             for tiro in estado["tiros"][:]:
@@ -61,8 +64,8 @@ def atualizar(estado):
                 break
 
         # Spawn inimigos
-        if agora - estado["tempo_ultimo_inimigo"] >= INTERVALO_SPAWN_INIMIGO:
-            estado["inimigos"].append(Inimigo(estado["largura"], estado["altura"], estado["y_max_inimigo"], estado["sprite_inimigo"]))
+        if agora - estado["tempo_ultimo_inimigo"] >= INTERVALO_SPAWN_INIMIGO and len(estado["inimigos"]) <= QUANT_INIMIGOS_MAX:
+            estado["inimigos"].append(Inimigo(estado["largura"], estado["altura"], estado["sprite_inimigo"]))
             estado["tempo_ultimo_inimigo"] = agora
 
         # Atualiza tiros

@@ -2,15 +2,14 @@ import pygame
 from random import randint
 
 class Inimigo:
-    def __init__(self, largura, altura, limite_y, sprite):
+    def __init__(self, largura, altura, sprite):
         self.x = randint(0, largura - 40)
         self.y = randint(-200, -40)
         self.sprite = sprite
-        self.limite_y = limite_y
+        self.altura_tela = altura
 
     def atualizar(self):
-        if self.y < self.limite_y:
-            self.y += 1
+        self.y += 1
 
     def desenhar(self, tela):
         tela.blit(self.sprite, (self.x, self.y))

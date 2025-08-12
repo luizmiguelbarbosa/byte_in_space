@@ -28,8 +28,8 @@ def processar_eventos(estado):
             if event.key == K_SPACE and not estado["jogo_rodando"] and not estado["game_over"]:
                 iniciar_jogo(estado)
 
-            # JOGO → disparar tiros com espaço
-            elif event.key == K_SPACE and estado["jogo_rodando"] and not estado["game_over"]:
+            # JOGO → disparar tiros com z
+            elif event.key == K_z and estado["jogo_rodando"] and not estado["game_over"]:
                 disparar_tiro(estado)
 
 
@@ -50,7 +50,7 @@ def iniciar_jogo(estado):
 
     for _ in range(QUANT_INIMIGOS_INICIO):
         estado["inimigos"].append(
-            Inimigo(estado["largura"], estado["altura"], estado["y_max_inimigo"], estado["sprite_inimigo"])
+            Inimigo(estado["largura"], estado["altura"], estado["sprite_inimigo"])
         )
 
 
