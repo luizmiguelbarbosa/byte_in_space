@@ -97,4 +97,9 @@ Arquivos de assets do jogo. Ex: `Imagens`, `Músicas` e `Vídeos`
   <img src="assets/caputuras/3.png" alt="Captura 3" width="300">
 </p>
 
+## Bibliotecas Utilizadas
+```bash
+pygame 2.6.1
+openCV2 4.12.0
+```
 
