@@ -105,9 +105,6 @@ openCV2 4.12.0
 ## Divisão de Tarefas do Projeto 🌌
 
 <p align="center">
-  <img src="https://www.transparenttextures.com/patterns/stardust.png" alt="Fundo estrelado">
-</p>
-
 <table align="center">
   <tr>
     <th>Time</th>
