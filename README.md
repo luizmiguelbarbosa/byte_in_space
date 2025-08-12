@@ -90,5 +90,5 @@ Arquivos de assets do jogo. Ex: `Imagens`, `Músicas` e `Vídeos`
 │   └── videos
 │       └── cutscene1.mp4
 ```
-
+## Capturas de Tela
 
