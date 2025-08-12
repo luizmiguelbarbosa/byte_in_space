@@ -61,4 +61,34 @@ pip install -r requirements.txt
 Arquitetura de Pastas do Projeto
 ### entites
 Classes das entidades do jogo. Ex: `Player`, `Inimigos` e `Coletáveis`
+```bash
+├── entities
+│   ├── coletavel.py
+│   ├── eventos.py
+│   ├── inimigo.py
+│   ├── nave.py
+│   ├── render.py
+│   └── update.py
+```
+### assets
+Arquivos de assets do jogo. Ex: `Imagens`, `Músicas` e `Vídeos`
+```bash
+├── assets
+│   ├── imagens
+│   │   ├── cenario1.png
+│   │   ├── circuito.png
+│   │   ├── computador.png
+│   │   ├── dados.png
+│   │   ├── icone_janela.png
+│   │   ├── imagem_menu.png
+│   │   ├── sprite_inimigo.png
+│   │   └── sprite_nave.png
+│   ├── musicas
+│   │   ├── musica_jogo.mp3
+│   │   ├── musica_start.mp3
+│   │   └── tiro.mp3
+│   └── videos
+│       └── cutscene1.mp4
+```
+
 
