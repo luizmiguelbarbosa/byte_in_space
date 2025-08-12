@@ -58,7 +58,7 @@ cd byte_in_space
 pip install -r requirements.txt
 ```
 ## Estruturas de Pastas 📂
-Arquitetura de Pastas do Projeto
+## Arquitetura de Pastas do Projeto
 ### entites
 Classes das entidades do jogo. Ex: `Player`, `Inimigos` e `Coletáveis`
 ```bash
