@@ -104,38 +104,39 @@ openCV2 4.12.0
 ```
 ## Divisão de Tarefas do Projeto 🌌
 
-<div style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); background-color: #000; padding: 20px; border-radius: 15px;">
+<div style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); background-color: #000; padding: 15px; border-radius: 10px;">
 
-<table align="center" style="color: white; border-collapse: collapse; width: 100%;">
+<table style="width: 100%; border-collapse: collapse; color: white;">
   <tr>
     <th style="border: 1px solid white; padding: 8px;">Time</th>
-    <th style="border: 1px solid white; padding: 8px;">Link do GitHub</th>
+    <th style="border: 1px solid white; padding: 8px;">Tarefas</th>
   </tr>
   <tr>
-    <td style="border: 1px solid white; padding: 8px;">Gustavo Charamba</td>
-    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/gustavocharamba?tab=overview&from=2025-08-01&to=2025-08-11" style="color: #00FFCF;">Perfil</a></td>
+    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/gustavocharamba?tab=overview&from=2025-08-01&to=2025-08-11" style="color: #FFD700;">Gustavo Charamba</a></td>
+    <td style="border: 1px solid white; padding: 8px;">Desenvolveu estados de controle do jogo e lógica envolvendo itens e inventário</td>
   </tr>
   <tr>
-    <td style="border: 1px solid white; padding: 8px;">lgss0</td>
-    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/lgss0" style="color: #00FFCF;">Perfil</a></td>
+    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/lgss0" style="color: #FFD700;">lgss0</a></td>
+    <td style="border: 1px solid white; padding: 8px;">Desenvolveu todas as responsividades do jogo</td>
   </tr>
   <tr>
-    <td style="border: 1px solid white; padding: 8px;">SmouraCodeX</td>
-    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/SmouraCodeX" style="color: #00FFCF;">Perfil</a></td>
+    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/SmouraCodeX" style="color: #FFD700;">SmouraCodeX</a></td>
+    <td style="border: 1px solid white; padding: 8px;">Desenvolveu telas iniciais, créditos, game over e mecânica de tiros com o mouse</td>
   </tr>
   <tr>
-    <td style="border: 1px solid white; padding: 8px;">lebb8</td>
-    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/lebb8" style="color: #00FFCF;">Perfil</a></td>
+    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/lebb8" style="color: #FFD700;">lebb8</a></td>
+    <td style="border: 1px solid white; padding: 8px;">Desenvolveu colisões entre todos os objetos do projeto</td>
   </tr>
   <tr>
-    <td style="border: 1px solid white; padding: 8px;">luizmiguelbarbosa</td>
-    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/luizmiguelbarbosa" style="color: #00FFCF;">Perfil</a></td>
+    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/luizmiguelbarbosa" style="color: #FFD700;">luizmiguelbarbosa</a></td>
+    <td style="border: 1px solid white; padding: 8px;">Principal code reviewer, desenvolveu a classe base de entidades e movimentação do player</td>
   </tr>
   <tr>
-    <td style="border: 1px solid white; padding: 8px;">miqueias-santos</td>
-    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/miqueias-santos" style="color: #00FFCF;">Perfil</a></td>
+    <td style="border: 1px solid white; padding: 8px;"><a href="https://github.com/miqueias-santos" style="color: #FFD700;">miqueias-santos</a></td>
+    <td style="border: 1px solid white; padding: 8px;">Auxiliou no design e contribuiu para otimizações de desempenho do projeto</td>
   </tr>
 </table>
 
 </div>
+
 
