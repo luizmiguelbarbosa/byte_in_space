@@ -1,6 +1,6 @@
 # Byte in Space 🐶🚀💫
 
-# Equipe 🧑‍💻
+## Equipe 🧑‍💻
 <table>
   <tr>
     <td align="center">
@@ -40,7 +40,7 @@
   </tr>
 </table>
 
-# Instalando o jogo ⚙️🛠️
+## Instalando o jogo ⚙️🛠️
 
 Clone o repositório
 ```bash
@@ -57,8 +57,8 @@ cd byte_in_space
 ```bash
 pip install -r requirements.txt
 ```
-# Estruturas de Pastas 📂
+## Estruturas de Pastas 📂
 Arquitetura de Pastas do Projeto
-## entites
+### entites
 Classes das entidades do jogo. Ex.: `Player` e `Inimigos`
 
