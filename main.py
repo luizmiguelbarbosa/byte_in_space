@@ -64,7 +64,7 @@ estado = {
     "inimigos": [],
     "coletaveis": [],
     "velocidade_coletavel": VELOCIDADE_COLETAVEL,
-    "y_max_inimigo": altura // 2,
+    "y_max_inimigo": altura,
     "intervalo_spawn_inimigo": INTERVALO_SPAWN_INIMIGO,
     "tempo_ultimo_inimigo": pygame.time.get_ticks(),
     "fonte_fase": pygame.font.SysFont(None, 60),
