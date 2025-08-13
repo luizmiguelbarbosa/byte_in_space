@@ -68,7 +68,7 @@ estado = {
     "intervalo_spawn_inimigo": INTERVALO_SPAWN_INIMIGO,
     "tempo_ultimo_inimigo": pygame.time.get_ticks(),
     "fonte_fase": pygame.font.SysFont(None, 60),
-    "texto_fase": pygame.font.SysFont(None, 60).render('Fase 1', True, (255, 255, 255)),
+    "texto_fase": pygame.font.SysFont(None, 60).render('Capítulo I: A Ascensão', True, pygame.color.Color("deepskyblue")),
     "contagem_coletaveis": {'computador': 0, 'circuito': 0, 'dados': 0},
     "imune_ate": 0,
     "turbo_ate": 0,
@@ -84,7 +84,7 @@ estado = {
     "tempo_game_win" : 0,
 
     "fonte_game_over": pygame.font.SysFont(None, 80),
-    "texto_game_over": pygame.font.SysFont(None, 80).render('GAME OVER', True, (255, 0, 0)),
+    "texto_game_over": pygame.font.Font("assets/fontes/pixel-game/Pixel Game.otf", 80).render('GAME OVER', True, (255, 0, 0)),
     "texto_venceu": pygame.font.SysFont(None, 80).render('VOCÊ VENCEU!', True, (0, 255, 0)),
     "fonte_item": pygame.font.SysFont(None, 30),
     "musica_fase1": 'assets/musicas/musica_start.mp3',
