@@ -65,4 +65,9 @@ def desenhar_game_over(estado):
                       estado["altura"] // 2 - texto.get_height() // 2))
 
 def desenhar_game_win(estado):
-    #corpo
+    tela = TELA
+    tela.blit(estado["cenario"], (0, 0))
+    texto = estado["texto_venceu"]
+    tela.blit(texto, (estado["largura"] // 2 - texto.get_width() // 2,
+                      estado["altura"] // 2 - texto.get_height() // 2))
+    
