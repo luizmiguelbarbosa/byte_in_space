@@ -12,7 +12,7 @@ def processar_eventos(estado):
             pygame.quit()
             exit()
 
-        # Clique do mouse (opcional, ainda funciona)
+        # Clique do mouse 
         elif event.type == MOUSEBUTTONDOWN and event.button == 1:
             if not estado["jogo_rodando"] and not estado["game_over"]:
                 if estado["botao_start"].collidepoint(event.pos):
@@ -29,7 +29,7 @@ def processar_eventos(estado):
                 iniciar_jogo(estado)
 
             # JOGO → disparar tiros com z
-            elif event.key == K_z and estado["jogo_rodando"] and not estado["game_over"]:
+            if event.key == K_z and estado["jogo_rodando"] and not estado["game_over"]:
                 disparar_tiro(estado)
 
 

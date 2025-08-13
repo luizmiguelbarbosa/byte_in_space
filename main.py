@@ -83,13 +83,12 @@ estado = {
     "tempo_game_over": 0,
     "tempo_game_win" : 0,
 
-    "fonte_game_over": pygame.font.SysFont(None, 80),
     "texto_game_over": pygame.font.Font("assets/fontes/pixel-game/Pixel Game.otf", 80).render('GAME OVER', True, (255, 0, 0)),
     "texto_venceu": pygame.font.SysFont(None, 80).render('VOCÊ VENCEU!', True, (0, 255, 0)),
-    "fonte_item": pygame.font.SysFont(None, 30),
     "musica_fase1": 'assets/musicas/musica_start.mp3',
     "pontuacao" : 0,
-    "mensagens" : pygame.sprite.Group()
+    "mensagens" : pygame.sprite.Group(),
+    "tiro_time" : 0
 }
 
 clock = pygame.time.Clock()
@@ -141,12 +140,14 @@ while True:
         
         if estado["game_over"]:
             desenhar_game_over(estado)
+            estado["pontuacao"] = 0
             if pygame.time.get_ticks() - estado["tempo_game_over"] >= 2000:
                 estado["game_over"] = False
                 estado["jogo_rodando"] = False
       
         elif estado["game_win"]:
             desenhar_game_win(estado)
+            estado["pontuacao"] = 0
             if pygame.time.get_ticks() - estado["tempo_game_win"] >= 2000:
                 estado["game_win"] = False
                 estado["jogo_rodando"] = False 

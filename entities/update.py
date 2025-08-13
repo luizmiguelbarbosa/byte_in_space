@@ -62,7 +62,7 @@ def atualizar(estado): #FUNÇÃO CHAMADA POR ITERAÇÃO DE LOOPING PRINCIPAL
                     
                     #CONDIÇÃO DE VITÓRIA
                     estado["pontuacao"] += 15
-                    if estado["pontuacao"] >= 500:
+                    if estado["pontuacao"] >= MAX_PONTUACAO:
                         estado["game_win"] = True
                         estado["tempo_game_win"] = pygame.time.get_ticks()
                         break
@@ -74,7 +74,7 @@ def atualizar(estado): #FUNÇÃO CHAMADA POR ITERAÇÃO DE LOOPING PRINCIPAL
                     break
             
             #COLISÃO NAVE x INIMIGO
-            rect_nave = pygame.Rect(estado["nave_x"]+10, estado["nave_y"]+20, NAVE_LARGURA-20, NAVE_ALTURA-35) #ALTERADO
+            rect_nave = pygame.Rect(estado["nave_x"]+10, estado["nave_y"]+20, NAVE_LARGURA-20, NAVE_ALTURA-35) 
             if rect_nave.colliderect(inimigo.get_rect()):
                 if agora >= estado["imune_ate"]:
                     estado["game_over"] = True

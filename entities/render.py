@@ -28,8 +28,9 @@ def renderizar(estado):
         pygame.draw.rect(tela, (0, 200, 255), rect_nave.inflate(10, 10), 3, border_radius=6)
 
     #DESENHA OS TIROS, DE COORDENADAS ARMAZENADAS EM ESTADO["TIROS"], VIA RECT
+    tiro_byte = pygame.image.load("assets/lasers/11(c).png")
     for tiro in estado["tiros"]:
-        pygame.draw.rect(tela, (255, 0, 0), (tiro[0], tiro[1], 4, 10))
+        tela.blit(pygame.transform.rotate(pygame.transform.scale(tiro_byte, (20, 5)), 90),(tiro[0], tiro[1]))
 
     #DESENHA OS INIMIGOS CHAMANDO O MÉTODO DESENHAR DE CADA OBJETO ARMAZENADO NO ARRAY ESTADO["INIMIGOS"]
     for inimigo in estado["inimigos"]:
@@ -43,16 +44,22 @@ def renderizar(estado):
         c.desenhar(tela, estado["sprite_coletaveis"])
 
     # HUD
-    fonte_item = estado["fonte_item"]
+    fonte_item = pygame.font.SysFont(None, 30)
+    fonte_pont = pygame.font.SysFont(None, 30)
 
     texto_e = fonte_item.render(f'Computadores: {estado["contagem_coletaveis"]["computador"]}', True, (0, 200, 255))
     texto_t = fonte_item.render(f'Circuitos: {estado["contagem_coletaveis"]["circuito"]}', True, (255, 200, 0))
     texto_f = fonte_item.render(f'Dados: {estado["contagem_coletaveis"]["dados"]}', True, (255, 80, 80))
 
+    texto_pont = fonte_item.render(f'Objetivo: {estado["pontuacao"]}/{MAX_PONTUACAO}', True, (255, 255, 255))
+
     x_hud, y_hud = 10, 10
     tela.blit(texto_e, (x_hud, y_hud))
     tela.blit(texto_t, (x_hud, y_hud + texto_e.get_height() + 4))
     tela.blit(texto_f, (x_hud, y_hud + texto_e.get_height() + texto_t.get_height() + 8))
+    
+    #DESENHAR PONTUAÇÃO
+    tela.blit(texto_pont, (LARGURA - texto_pont.get_width() - 10, 30))
 
 def desenhar_menu(estado):
     TELA.blit(estado["imagem_menu"], (0, 0))

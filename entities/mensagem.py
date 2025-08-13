@@ -10,7 +10,6 @@ class Mensagem(pygame.sprite.Sprite):
         self.rect = pygame.rect.Rect(X_enemy+2,Y_enemy+15, 60, 44)
         self.alpha = 255 #alpha trata-se da transparência da imagem
     
-       
     def update(self):
         if self.alpha > 0:
             self.alpha -= 5
