@@ -97,15 +97,15 @@ clock = pygame.time.Clock()
 # --- Variáveis da cutscene ---
 cutscene_ativa = True
 cutscene_video = cv2.VideoCapture('assets/videos/cutscene1.mp4')
-cutscene_audio = 'assets/musicas/musica_cutscene.mp3' #ALTERADO
+
+pygame.mixer.music.load('assets/musicas/musica_cutscene.mp3')
+pygame.mixer.music.play(-1)
 
 # Loop principal
 while True:
     clock.tick(FPS)
     if cutscene_ativa:
         ret, frame = cutscene_video.read()
-        pygame.mixer.music.load(cutscene_audio)
-        pygame.mixer.music.play(-1)
         if ret:
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             frame = pygame.image.frombuffer(frame.tobytes(), frame.shape[1::-1], "RGB")
@@ -115,8 +115,8 @@ while True:
             # Se o vídeo acabar
             cutscene_ativa = False
             cutscene_video.release()
-            pygame.mixer.music.load(cutscene_audio)# ALTERADO
-            pygame.mixer.music.play()# ALTERADO
+
+            pygame.mixer.music.stop()  # Para a música da cutscene
 
         # Eventos de pulo/cancelamento da cutscene
         for event in pygame.event.get():
@@ -127,8 +127,11 @@ while True:
             if event.type in (KEYDOWN, MOUSEBUTTONDOWN):
                 cutscene_ativa = False
                 cutscene_video.release()
-                pygame.mixer.music.load('assets/musicas/musica_jogo.mp3')
-                pygame.mixer.music.play(-1)
+
+                pygame.mixer.music.stop()  # Para a música da cutscene
+
+                pygame.mixer.music.load('assets/musicas/musica_jogo.mp3')  # Carrega a música do jogo
+                pygame.mixer.music.play(-1)  # Toca a música do jogo em loop
 
     else:
         processar_eventos(estado)
