@@ -118,6 +118,8 @@ while True:
 
             pygame.mixer.music.stop()  # Para a música da cutscene
 
+            pygame.mixer.music.load('assets/musicas/musica_jogo.mp3')  # Carrega a música do jogo
+            pygame.mixer.music.play(-1)  # Toca a música do jogo em loop
         # Eventos de pulo/cancelamento da cutscene
         for event in pygame.event.get():
             if event.type == QUIT:
