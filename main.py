@@ -5,7 +5,7 @@ from config import *
 from entities.coletavel import Coletavel
 from entities.eventos import processar_eventos
 import entities.update
-from entities.render import renderizar, desenhar_menu, desenhar_game_over
+from entities.render import renderizar, desenhar_menu, desenhar_game_over, desenhar_game_win
 
 pygame.init()
 pygame.mixer.init()
@@ -33,7 +33,7 @@ def criar_botoes(largura, altura):
 
 botao_start, botao_diffcuty, botao_credits = criar_botoes(largura, altura)
 
-# Estado do jogo
+# Criação de um dicionário que guarda as variáveis do jogo. Assim, para métodos obterem argumentos do game, ocorre a partir do dicionário "estado"
 estado = {
     "largura": largura,
     "altura": altura,
@@ -79,11 +79,16 @@ estado = {
         'dados': pygame.transform.scale(pygame.image.load('assets/imagens/dados.png'), (Coletavel.TAM, Coletavel.TAM)),
     },
     "game_over": False,
+    "game_win": False,
     "tempo_game_over": 0,
+    "tempo_game_win" : 0,
+
     "fonte_game_over": pygame.font.SysFont(None, 80),
     "texto_game_over": pygame.font.SysFont(None, 80).render('GAME OVER', True, (255, 0, 0)),
     "fonte_item": pygame.font.SysFont(None, 30),
     "musica_fase1": 'assets/musicas/musica_start.mp3',
+    "pontuacao" : 0,
+    "mensagens" : pygame.sprite.Group()
 }
 
 clock = pygame.time.Clock()
@@ -133,13 +138,19 @@ while True:
             if pygame.time.get_ticks() - estado["tempo_game_over"] >= 2000:
                 estado["game_over"] = False
                 estado["jogo_rodando"] = False
+      
+        elif estado["game_win"]:
+            desenhar_game_win(estado)
+            if pygame.time.get_ticks() - estado["tempo_game_win"] >= 2000:
+                estado["game_over"] = False
+                estado["jogo_rodando"] = False 
+        
         elif estado["jogo_rodando"]:
             renderizar(estado)
             entities.update.explosions_group.update()
             entities.update.explosions_group.draw(TELA)
         else:
             desenhar_menu(estado)
-
 
         
         pygame.display.update()

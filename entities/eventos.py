@@ -56,7 +56,7 @@ def iniciar_jogo(estado):
 
 def disparar_tiro(estado):
     agora = pygame.time.get_ticks()
-    centro_tiro = estado["nave_x"] + NAVE_LARGURA // 2 - 2
+    centro_tiro = estado["nave_x"] + (NAVE_LARGURA // 2) - 2
     if agora < estado["furia_ate"]:
         estado["tiros"].extend([
             [centro_tiro - 12, estado["nave_y"]],
@@ -64,7 +64,7 @@ def disparar_tiro(estado):
             [centro_tiro + 12, estado["nave_y"]],
         ])
     else:
-        estado["tiros"].append([centro_tiro, estado["nave_y"]])
+        estado["tiros"].append([centro_tiro+22, estado["nave_y"]])
     estado["som_tiro"].play()
 
 

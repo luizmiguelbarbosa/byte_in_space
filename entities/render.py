@@ -1,6 +1,8 @@
 import pygame
 from config import *
 
+#função chamada na main para desenhar/renderizar todos os objetos, seja via métodos internos do próprio objeto, seja
+#via extração de rect e métodos do próprio pygame. Chamada por interação do lopping principal
 def renderizar(estado):
     tela = TELA
 
@@ -17,21 +19,24 @@ def renderizar(estado):
         else:
             estado["mostrar_texto_fase"] = False
 
-    # Nave
+    #DESENHA A NAVE VIA MÉTODO BLIT E COORDENADAS DA NAVE, JUNTO A SEU SPRITE
     tela.blit(estado["sprite_nave"], (estado["nave_x"], estado["nave_y"]))
 
-    # Aura ESCUDO
+    #DESENHA O ESCUDO, QUANDO POSSÍVEL/NECESSÁRIO
     if pygame.time.get_ticks() < estado["imune_ate"]:
         rect_nave = pygame.Rect(estado["nave_x"], estado["nave_y"], NAVE_LARGURA, NAVE_ALTURA)
         pygame.draw.rect(tela, (0, 200, 255), rect_nave.inflate(10, 10), 3, border_radius=6)
 
-    # Tiros
+    #DESENHA OS TIROS, DE COORDENADAS ARMAZENADAS EM ESTADO["TIROS"], VIA RECT
     for tiro in estado["tiros"]:
-        pygame.draw.rect(tela, (255, 0, 0), (tiro[0]+22, tiro[1], 4, 10))
+        pygame.draw.rect(tela, (255, 0, 0), (tiro[0], tiro[1], 4, 10))
 
-    # Inimigos
+    #DESENHA OS INIMIGOS CHAMANDO O MÉTODO DESENHAR DE CADA OBJETO ARMAZENADO NO ARRAY ESTADO["INIMIGOS"]
     for inimigo in estado["inimigos"]:
         inimigo.desenhar(tela)
+    
+    #DESENHA AS MENSAGENS A PARTIR DO ARRAY ESTADO["MENSAGENS"], DONDE CADA ELEMENTO É UM ARRAY DA FORMA: [MSG_PONTO, RECT]
+    estado["mensagens"].draw(tela)
 
     # Coletáveis
     for c in estado["coletaveis"]:
@@ -58,3 +63,6 @@ def desenhar_game_over(estado):
     texto = estado["texto_game_over"]
     tela.blit(texto, (estado["largura"] // 2 - texto.get_width() // 2,
                       estado["altura"] // 2 - texto.get_height() // 2))
+
+def desenhar_game_win(estado):
+    #corpo

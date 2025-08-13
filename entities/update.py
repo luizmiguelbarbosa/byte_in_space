@@ -4,9 +4,11 @@ from random import randint
 from entities.coletavel import Coletavel
 from entities.inimigo import Inimigo
 from entities.explosion import Explosion
+from entities.mensagem import Mensagem
 
 explosions_group = pygame.sprite.Group()
-def atualizar(estado):
+
+def atualizar(estado): #FUNÇÃO CHAMADA POR ITERAÇÃO DE LOOPING PRINCIPAL
     if estado["jogo_rodando"] and not estado["game_over"]:
         agora = pygame.time.get_ticks()
         estado["velocidade_nave"] = VELOCIDADE_NAVE_BASE * (2 if agora < estado["turbo_ate"] else 1)
@@ -41,27 +43,37 @@ def atualizar(estado):
             estado["cenario_y2"] = -estado["altura"]
         
         
-        # Atualiza inimigos
+        #TRATA DE ATUALIZAR O ESTADO DOS INIMIGOS
         for inimigo in estado["inimigos"][:]:
             inimigo.atualizar()
             if inimigo.y > ALTURA:
                  estado["inimigos"].remove(inimigo)
 
-            # Colisão tiros × inimigos
+            #COLISÃO TIRO X INIMIGO
             for tiro in estado["tiros"][:]:
                 if inimigo.get_rect().collidepoint(tiro[0], tiro[1]):
+                    #APAGA O TIRO E O INIMIGO COLIDIDO DOS ARRAYS E, PORTANTO, DA RENDERIZAÇÃO E ATUALIZAÇÕES DE MOVIMENTOS
                     estado["tiros"].remove(tiro)
                     estado["inimigos"].remove(inimigo)
+                    #GERA UM OBJETO EXPLOSÃO
                     explosion = Explosion(inimigo.x, inimigo.y)
-                    global explosions_group
                     explosions_group.add(explosion)
+                    estado["mensagens"].add(Mensagem("+15", (255, 255, 0), inimigo.x, inimigo.y))
                     
+                    #CONDIÇÃO DE VITÓRIA
+                    estado["pontuacao"] += 15
+                    if estado["pontuacao"] >= 500:
+                        estado["game_win"] = True
+                        estado["tempo_game_win"] = pygame.time.get_ticks()
+                        break
                     
+                    #CHANCE DE 3/10 DE DROPAR UM COLETÁVEL
                     if randint(1, 10) <= 3:
                         tipo_sorteado = ('computador', 'circuito', 'dados')[randint(0, 2)]
                         estado["coletaveis"].append(Coletavel(inimigo.x, inimigo.y, tipo_sorteado))
                     break
-            # Colisão nave × inimigos
+            
+            #COLISÃO NAVE x INIMIGO
             rect_nave = pygame.Rect(estado["nave_x"]+10, estado["nave_y"]+20, NAVE_LARGURA-20, NAVE_ALTURA-35) #ALTERADO
             if rect_nave.colliderect(inimigo.get_rect()):
                 if agora >= estado["imune_ate"]:
@@ -69,7 +81,10 @@ def atualizar(estado):
                     estado["tempo_game_over"] = pygame.time.get_ticks()
                 break
 
-        # Spawn inimigos
+        #ATUALIZA OS OBJETOS MENSAGENS DENTRO DO GRUPO ESTADO["MENSAGENS"]
+        estado["mensagens"].update()
+
+        #RESPONSÁVEL POR SPAWNAR INIMIGOS
         if agora - estado["tempo_ultimo_inimigo"] >= INTERVALO_SPAWN_INIMIGO and len(estado["inimigos"]) <= QUANT_INIMIGOS_MAX:
             estado["inimigos"].append(Inimigo(estado["largura"], estado["altura"], estado["sprite_inimigo"]))
             estado["tempo_ultimo_inimigo"] = agora
@@ -91,10 +106,12 @@ def atualizar(estado):
             if rect_nave.colliderect(c.rect):
                 estado["coletaveis"].remove(c)
                 estado["contagem_coletaveis"][c.tipo] += 1
-                if estado["contagem_coletaveis"][c.tipo] // 3 == 0:
+                if estado["contagem_coletaveis"][c.tipo] >= 3:
                     if c.tipo == 'computador':
                         estado["imune_ate"] = agora + EFEITO_DURACAO
                     elif c.tipo == 'circuito':
                         estado["turbo_ate"] = agora + EFEITO_DURACAO
                     elif c.tipo == 'dados':
                         estado["furia_ate"] = agora + EFEITO_DURACAO
+                    estado["contagem_coletaveis"][c.tipo] = 0
+    
