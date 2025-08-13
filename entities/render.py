@@ -2,7 +2,7 @@ import pygame
 from config import *
 
 def renderizar(estado):
-    tela = estado["tela"]
+    tela = TELA
 
     # Cenário
     tela.blit(estado["cenario"], (0, estado["cenario_y1"]))
@@ -27,7 +27,7 @@ def renderizar(estado):
 
     # Tiros
     for tiro in estado["tiros"]:
-        pygame.draw.rect(tela, (255, 0, 0), (tiro[0], tiro[1], 4, 10))
+        pygame.draw.rect(tela, (255, 0, 0), (tiro[0]+22, tiro[1], 4, 10))
 
     # Inimigos
     for inimigo in estado["inimigos"]:
@@ -50,10 +50,10 @@ def renderizar(estado):
     tela.blit(texto_f, (x_hud, y_hud + texto_e.get_height() + texto_t.get_height() + 8))
 
 def desenhar_menu(estado):
-    estado["tela"].blit(estado["imagem_menu"], (0, 0))
+    TELA.blit(estado["imagem_menu"], (0, 0))
 
 def desenhar_game_over(estado):
-    tela = estado["tela"]
+    tela = TELA
     tela.blit(estado["cenario"], (0, 0))
     texto = estado["texto_game_over"]
     tela.blit(texto, (estado["largura"] // 2 - texto.get_width() // 2,

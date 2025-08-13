@@ -4,7 +4,7 @@ import cv2  # Para a cutscene
 from config import *
 from entities.coletavel import Coletavel
 from entities.eventos import processar_eventos
-from entities.update import atualizar
+import entities.update
 from entities.render import renderizar, desenhar_menu, desenhar_game_over
 
 pygame.init()
@@ -14,7 +14,7 @@ pygame.font.init()
 # Configurações iniciais
 largura = LARGURA
 altura = ALTURA
-tela = pygame.display.set_mode((largura, altura))  # Sem redimensionamento
+tela = TELA# Sem redimensionamento
 pygame.display.set_caption("Byte in Space")
 icone = pygame.image.load('assets/imagens/icone_janela.png')
 pygame.display.set_icon(icone)
@@ -126,8 +126,8 @@ while True:
 
     else:
         processar_eventos(estado)
-        atualizar(estado)
-
+        entities.update.atualizar(estado)
+        
         if estado["game_over"]:
             desenhar_game_over(estado)
             if pygame.time.get_ticks() - estado["tempo_game_over"] >= 2000:
@@ -135,7 +135,11 @@ while True:
                 estado["jogo_rodando"] = False
         elif estado["jogo_rodando"]:
             renderizar(estado)
+            entities.update.explosions_group.update()
+            entities.update.explosions_group.draw(TELA)
         else:
             desenhar_menu(estado)
 
+
+        
         pygame.display.update()

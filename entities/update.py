@@ -3,7 +3,9 @@ from config import *
 from random import randint
 from entities.coletavel import Coletavel
 from entities.inimigo import Inimigo
+from entities.explosion import Explosion
 
+explosions_group = pygame.sprite.Group()
 def atualizar(estado):
     if estado["jogo_rodando"] and not estado["game_over"]:
         agora = pygame.time.get_ticks()
@@ -37,26 +39,30 @@ def atualizar(estado):
             estado["cenario_y1"] = -estado["altura"]
         if estado["cenario_y2"] >= estado["altura"]:
             estado["cenario_y2"] = -estado["altura"]
-
+        
+        
         # Atualiza inimigos
         for inimigo in estado["inimigos"][:]:
             inimigo.atualizar()
             if inimigo.y > ALTURA:
                  estado["inimigos"].remove(inimigo)
-                 print("morreu")
 
             # Colisão tiros × inimigos
             for tiro in estado["tiros"][:]:
                 if inimigo.get_rect().collidepoint(tiro[0], tiro[1]):
                     estado["tiros"].remove(tiro)
                     estado["inimigos"].remove(inimigo)
+                    explosion = Explosion(inimigo.x, inimigo.y)
+                    global explosions_group
+                    explosions_group.add(explosion)
+                    
+                    
                     if randint(1, 10) <= 3:
                         tipo_sorteado = ('computador', 'circuito', 'dados')[randint(0, 2)]
                         estado["coletaveis"].append(Coletavel(inimigo.x, inimigo.y, tipo_sorteado))
                     break
-
             # Colisão nave × inimigos
-            rect_nave = pygame.Rect(estado["nave_x"], estado["nave_y"], NAVE_LARGURA, NAVE_ALTURA)
+            rect_nave = pygame.Rect(estado["nave_x"]+10, estado["nave_y"]+20, NAVE_LARGURA-20, NAVE_ALTURA-35) #ALTERADO
             if rect_nave.colliderect(inimigo.get_rect()):
                 if agora >= estado["imune_ate"]:
                     estado["game_over"] = True

@@ -15,4 +15,4 @@ class Inimigo:
         tela.blit(self.sprite, (self.x, self.y))
 
     def get_rect(self):
-        return pygame.Rect(self.x, self.y, 75, 75)
+        return pygame.Rect(self.x+2, self.y+15, 60, 44) #ALTERADO

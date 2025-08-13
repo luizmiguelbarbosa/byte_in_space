@@ -1,9 +1,12 @@
+from pygame import display
 # config.py
 LARGURA = 1280
 ALTURA = 720
 ALTURA_BASE = 720
 VELOCIDADE_BASE_CENARIO = 0.5
 FPS = 60
+
+TELA = display.set_mode((LARGURA, ALTURA))
 
 NAVE_LARGURA = 80
 NAVE_ALTURA = 80
