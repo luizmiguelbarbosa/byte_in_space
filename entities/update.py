@@ -69,7 +69,7 @@ def atualizar(estado): #FUNÇÃO CHAMADA POR ITERAÇÃO DE LOOPING PRINCIPAL
                         break
                     
                     #CHANCE DE 3/10 DE DROPAR UM COLETÁVEL
-                    if randint(1, 10) <= 3:
+                    if randint(1, 10) <= 5:
                         tipo_sorteado = ('computador', 'circuito', 'dados')[randint(0, 2)]
                         estado["coletaveis"].append(Coletavel(inimigo.x, inimigo.y, tipo_sorteado))
                     break
