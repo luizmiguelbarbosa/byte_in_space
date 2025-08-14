@@ -48,10 +48,6 @@ def iniciar_jogo(estado):
     estado["turbo_ate"] = 0
     estado["furia_ate"] = 0
 
-    for _ in range(QUANT_INIMIGOS_INICIO):
-        estado["inimigos"].append(
-            Inimigo(estado["largura"], estado["altura"], estado["sprite_inimigo"])
-        )
 
 
 def disparar_tiro(estado):

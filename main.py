@@ -84,7 +84,7 @@ estado = {
     "tempo_game_win" : 0,
 
     "texto_game_over": pygame.font.Font("assets/fontes/pixel-game/Pixel Game.otf", 80).render('GAME OVER', True, (255, 0, 0)),
-    "texto_venceu": pygame.font.SysFont(None, 80).render('VOCÊ VENCEU!', True, (0, 255, 0)),
+    "texto_venceu": pygame.font.Font("assets/fontes/pixel-game/Pixel Game.otf", 80).render('VOCÊ VENCEU!', True, (0, 255, 0)),
     "musica_fase1": 'assets/musicas/musica_start.mp3',
     "pontuacao" : 0,
     "mensagens" : pygame.sprite.Group(),
