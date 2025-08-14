@@ -36,6 +36,8 @@ def renderizar(estado):
     for inimigo in estado["inimigos"]:
         inimigo.desenhar(tela)
     
+    estado["bullets"].draw(tela)
+
     #DESENHA AS MENSAGENS A PARTIR DO ARRAY ESTADO["MENSAGENS"], DONDE CADA ELEMENTO É UM ARRAY DA FORMA: [MSG_PONTO, RECT]
     estado["mensagens"].draw(tela)
 

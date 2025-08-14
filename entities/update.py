@@ -5,6 +5,7 @@ from entities.coletavel import Coletavel
 from entities.inimigo import Inimigo
 from entities.explosion import Explosion
 from entities.mensagem import Mensagem
+from entities.bullets_enemies import Bullet
 
 explosions_group = pygame.sprite.Group()
 
@@ -80,7 +81,17 @@ def atualizar(estado): #FUNÇÃO CHAMADA POR ITERAÇÃO DE LOOPING PRINCIPAL
                     estado["game_over"] = True
                     estado["tempo_game_over"] = pygame.time.get_ticks()
                 break
+        #COLISÃO NAVE x BULLET
+        rect_nave = pygame.Rect(estado["nave_x"]+10, estado["nave_y"]+20, NAVE_LARGURA-20, NAVE_ALTURA-35) 
+        for bullet in estado["bullets"]:
+            if agora >= estado["imune_ate"]:
+                if rect_nave.colliderect(bullet.rect):
+                    estado["game_over"] = True
+                    estado["bullets"].empty()
+                    estado["tempo_game_over"] = pygame.time.get_ticks()
+                break
 
+        estado["bullets"].update()
         #ATUALIZA OS OBJETOS MENSAGENS DENTRO DO GRUPO ESTADO["MENSAGENS"]
         estado["mensagens"].update()
 
@@ -88,7 +99,12 @@ def atualizar(estado): #FUNÇÃO CHAMADA POR ITERAÇÃO DE LOOPING PRINCIPAL
         if agora - estado["tempo_ultimo_inimigo"] >= INTERVALO_SPAWN_INIMIGO and len(estado["inimigos"]) <= QUANT_INIMIGOS_MAX:
             estado["inimigos"].append(Inimigo(estado["largura"], estado["altura"], estado["sprite_inimigo"]))
             estado["tempo_ultimo_inimigo"] = agora
-
+        
+        for inimigo in estado["inimigos"][:]:
+            if inimigo.y > 0:
+                num = randint(1, 500)
+                if num == 1:
+                    estado["bullets"].add(Bullet(5, inimigo.x+30, inimigo.y+30))
         # Atualiza tiros
         for tiro in estado["tiros"][:]:
             tiro[1] -= VELOCIDADE_TIRO

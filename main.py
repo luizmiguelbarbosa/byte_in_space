@@ -88,7 +88,8 @@ estado = {
     "musica_fase1": 'assets/musicas/musica_start.mp3',
     "pontuacao" : 0,
     "mensagens" : pygame.sprite.Group(),
-    "tiro_time" : 0
+    "tiro_time" : 0,
+    "bullets" : pygame.sprite.Group()
 }
 
 clock = pygame.time.Clock()
