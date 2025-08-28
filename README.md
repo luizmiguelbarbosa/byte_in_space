@@ -16,7 +16,7 @@
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/SmouraCodeX">
+      <a href="https://github.com/rafael-smoura">
         <img src="https://github.com/rafael-smoura" width="100px;" alt="SmouraCodeX"/><br />
         <sub><b>Rafael</b></sub>
       </a>
