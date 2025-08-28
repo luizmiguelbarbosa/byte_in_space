@@ -17,7 +17,7 @@
     </td>
     <td align="center">
       <a href="https://github.com/rafael-smoura">
-        <img src="https://github.com/rafael-smoura" width="100px;" alt="rafael-smoura"/><br />
+        <img src="https://avatars.githubusercontent.com/rafael-smoura" width="100px;" alt="rafael-smoura"/><br />
         <sub><b>Rafael</b></sub>
       </a>
     </td>
